@@ -1,6 +1,6 @@
-# SkySyncro
+# SkyBoilerplate
 
-SkySyncro is a reusable template for creating Minecraft plugins, designed specifically for **version 1.21.7** on Paper. This template provides a clean, ready-to-use structure to help you start your own plugin projects quickly and efficiently.
+This is a reusable template for creating Minecraft plugins, designed specifically for **version 1.21.7** on Paper. This template provides a clean, ready-to-use structure to help you start your own plugin projects quickly and efficiently.
 
 ## About This Template
 - **Reusable:** Easily adapt this template for any new Paper plugin project.
