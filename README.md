@@ -1,60 +1,317 @@
-# SkyBoilerplate
+# SkySyncro - Paper Plugin Template
 
-This is a reusable template for creating Minecraft plugins, designed specifically for **version 1.21.7** on Paper. This template provides a clean, ready-to-use structure to help you start your own plugin projects quickly and efficiently.
+A modern, reusable template for creating Minecraft Paper plugins targeting **Minecraft 1.21.7**. This template is specifically designed for the latest Minecraft versions and will **not support versions below 1.21**.
 
-## About This Template
-- **Reusable:** Easily adapt this template for any new Paper plugin project.
-- **Modern:** Uses the latest PaperMC API (1.21.7-R0.1-SNAPSHOT) and Java 21.
-- **Minimal & Clean:** Only the essentials are included—perfect for building your own features on top.
-- **Strict Compatibility:** This template is intended **only** for Minecraft 1.21.7. No support is provided for earlier versions, and backward compatibility is not planned.
+## 🎯 Features
 
-## Features
-- Pre-configured `pom.xml` with PaperMC repository and dependency.
-- Minimal `plugin.yml` ready for customization.
-- Main class (`Main.java`) already set up with `onEnable` and `onDisable` methods.
-- Clear project structure following best practices for Paper plugins.
+- **Latest Paper API**: Built for Minecraft 1.21.7 with the newest Paper API
+- **Maven-based**: Uses Maven for dependency management (no Gradle)
+- **Java 21**: Leverages the latest Java features and performance improvements
+- **Clean Structure**: Well-organized package structure and coding standards
+- **Ready-to-use**: Includes basic command handling, configuration, and permissions
+- **Template-focused**: Designed to be cloned and modified for your own projects
 
-## Getting Started
-1. **Clone or copy this template** to your own project directory.
-2. **Customize the package name, plugin name, and metadata** in `plugin.yml` and `Main.java` as needed.
-3. **Develop your features**: Add commands, event listeners, and logic in the `src/main/java` directory.
-4. **Build the plugin**:
-   - Use Maven: `mvn clean package` (or use the Maven panel in IntelliJ IDEA)
-   - The compiled JAR will be in the `target/` directory.
-5. **Deploy**:
-   - Place the generated JAR in the `plugins` folder of your Paper 1.21.7 server.
-   - Start or restart your server.
+## 🚀 Why This Template?
 
-## Project Structure
+### Maven Over Gradle
+This template deliberately uses **Maven instead of Gradle** for several reasons:
+- **Simplicity**: Maven's XML-based configuration is straightforward and easy to understand
+- **Rigidity**: Maven's opinionated structure enforces good practices and consistency
+- **Reliability**: Less configuration means fewer things can go wrong
+- **IDE Integration**: Better out-of-the-box support in most IDEs, especially IntelliJ IDEA
+- **Learning Curve**: Easier for beginners to understand and modify
+- **Dependency Management**: Clear and explicit dependency declarations
+- **Build Lifecycle**: Predictable and standardized build phases
+
+### Minecraft 1.21.7+ Only
+This template is **exclusively for Minecraft 1.21.7 and above**:
+- Takes advantage of the latest Paper API improvements and features
+- Uses modern Java 21 features for better performance and cleaner code
+- Follows current Minecraft development best practices
+- No legacy code or backwards compatibility concerns
+- Optimized for the latest server performance enhancements
+
+## 📋 Prerequisites
+
+- **Java 21** or higher (required for Minecraft 1.21.7)
+- **Maven 3.6+** for dependency management and building
+- **IntelliJ IDEA** (recommended) or any Java IDE with Maven support
+- **Paper Server 1.21.7+** for testing your plugin
+
+## 🛠️ Quick Start
+
+### 1. Clone or Download This Template
+```bash
+git clone https://github.com/loyfael/SkySyncro.git
+cd SkySyncro
+```
+
+### 2. Customize for Your Project
+1. **Rename the project**: Change `SkySyncro` to your plugin name in:
+   - `pom.xml` (artifactId and project name)
+   - `plugin.yml` (name and description)
+   - Main class name and package structure
+   - Directory/folder names
+
+2. **Update package structure**: Rename `loyfael` package to your own namespace
+
+3. **Modify plugin details** in `plugin.yml`:
+   - `name`: Your plugin's name
+   - `description`: What your plugin does
+   - `author`: Your name or organization
+   - `website`: Your project URL
+
+### 3. Build the Plugin
+Using Maven from command line:
+```bash
+mvn clean compile  # Compile only
+mvn clean package  # Compile and create JAR
+```
+
+Using IntelliJ IDEA:
+- Open the project in IntelliJ
+- Use the built-in Maven integration
+- Run the `package` goal from the Maven tool window
+
+The compiled `.jar` file will be in the `target/` directory.
+
+### 4. Test Your Plugin
+1. Copy the generated `.jar` file to your Paper server's `plugins/` folder
+2. Start your server
+3. Check the console for successful plugin loading
+4. Test commands: `/skysyncro info` and `/skysyncro reload`
+
+## 📁 Project Structure
+
 ```
 SkySyncro/
-├── pom.xml              # Maven configuration (PaperMC API, Java 21)
-├── README.md            # This documentation
+├── pom.xml                     # Maven configuration and dependencies
+├── README.md                   # This documentation file
+├── SkySyncro.iml              # IntelliJ IDEA module file
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   └── loyfael/
-│       │       └── Main.java   # Main plugin class
-│       └── resources/
-│           └── plugin.yml      # Plugin metadata
-└── target/              # Compiled JAR and build output
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── loyfael/
+│   │   │       └── Main.java   # Main plugin class
+│   │   └── resources/
+│   │       ├── plugin.yml      # Plugin metadata and configuration
+│   │       └── config.yml      # Plugin configuration file (optional)
+│   └── test/
+│       └── java/               # Unit tests directory (optional)
+└── target/                     # Compiled output (auto-generated)
+    ├── classes/                # Compiled Java classes
+    └── SkySyncro.jar          # Final plugin JAR file
 ```
 
-## Requirements
-- **Minecraft:** Paper 1.21.7
-- **Java:** 21 or higher
-- **Build Tool:** Maven (or use IntelliJ IDEA's built-in Maven)
+## 🔧 Key Files Explained
 
-## Customization Tips
-- Change the `main` class path in `plugin.yml` to match your package structure.
-- Update the `name`, `version`, `author`, and `description` fields in `plugin.yml`.
-- Add new classes for commands, listeners, and features in the `java/` directory.
+### `pom.xml` - Maven Configuration
+The heart of the project that:
+- Defines project metadata (group, artifact, version)
+- Manages dependencies (Paper API 1.21.7)
+- Configures build process and plugins
+- Sets Java version to 21
+- Includes Maven Shade plugin for creating fat JARs if needed
 
-## Why Only 1.21.7?
-This template is intentionally focused on the latest PaperMC API for Minecraft 1.21.7. Supporting only this version ensures you benefit from the newest features, best performance, and up-to-date security. There is **no plan to support older versions**.
+### `plugin.yml` - Paper Plugin Descriptor
+Essential file that tells Paper how to load your plugin:
+- Defines plugin metadata (name, version, author)
+- Specifies the main class entry point
+- Sets API version to 1.21 for compatibility
+- Declares commands, permissions, and dependencies
 
-## Why Maven and Not Gradle?
-I deliberately chose **Maven** over Gradle for this template. Maven offers a simpler, more rigid, and predictable build process, which is ideal for reusable templates and for developers who want clarity and stability in their project setup. Gradle is not supported or recommended for this template.
+### `Main.java` - Plugin Entry Point
+The main plugin class that:
+- Extends `JavaPlugin` from Paper API
+- Handles plugin startup (`onEnable()`) and shutdown (`onDisable()`)
+- Can register events, commands, tasks, and listeners
+- Manages plugin lifecycle and resources
 
-## License
-You are free to use, modify, and share this template for your own plugin projects.
+## 🎮 Default Features Included
+
+### Commands
+- `/skysyncro info` - Display plugin information and version
+- `/skysyncro reload` - Reload plugin configuration (admin only)
+
+### Permissions System
+- `skysyncro.use` - Basic plugin usage (default: true for all players)
+- `skysyncro.admin` - Administrative commands (default: op only)
+
+### Configuration Support
+- Ready for YAML configuration files
+- Automatic resource filtering through Maven
+- Version placeholders support
+
+## 🔨 Development Guide
+
+### Adding New Dependencies
+Add dependencies to `pom.xml` in the `<dependencies>` section:
+
+```xml
+<dependency>
+    <groupId>com.example</groupId>
+    <artifactId>example-library</artifactId>
+    <version>1.0.0</version>
+    <scope>provided</scope> <!-- Use 'provided' for server APIs -->
+</dependency>
+```
+
+**Scope Guidelines:**
+- `provided` - For APIs provided by the server (Paper API, other plugins)
+- `compile` - For libraries you want to include in your JAR
+- `test` - For testing frameworks (JUnit, Mockito)
+
+### Creating Commands
+1. Create a class implementing `CommandExecutor`:
+```java
+public class MyCommand implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Command logic here
+        return true;
+    }
+}
+```
+
+2. Register it in your main class's `onEnable()` method:
+```java
+getCommand("mycommand").setExecutor(new MyCommand());
+```
+
+3. Add command details to `plugin.yml`:
+```yaml
+commands:
+  mycommand:
+    description: Description of my command
+    usage: /mycommand [args]
+    permission: myplugin.mycommand
+```
+
+### Event Handling
+1. Create a class implementing `Listener`:
+```java
+public class MyListener implements Listener {
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        // Event handling logic
+    }
+}
+```
+
+2. Register the listener in your main class:
+```java
+getServer().getPluginManager().registerEvents(new MyListener(), this);
+```
+
+### Configuration Management
+1. Create YAML files in `src/main/resources/`
+2. Load configuration:
+```java
+// Default config.yml
+FileConfiguration config = getConfig();
+
+// Custom configuration file
+File customConfigFile = new File(getDataFolder(), "custom.yml");
+FileConfiguration customConfig = YamlConfiguration.loadConfiguration(customConfigFile);
+```
+
+## 🚫 What This Template Doesn't Include
+
+- **Legacy version support** (anything below Minecraft 1.21)
+- **Bukkit/Spigot compatibility layers** (Paper-only, modern APIs)
+- **Gradle build files** (Maven-only approach)
+- **Complex examples** (kept minimal and clean for template purposes)
+- **Database integrations** (add as needed for your specific use case)
+- **Advanced plugin architectures** (MVC, dependency injection, etc.)
+
+## 📝 Customization Checklist
+
+### Essential Customizations
+- [ ] Change `artifactId` in `pom.xml` to your plugin name
+- [ ] Update `groupId` in `pom.xml` to your organization/namespace
+- [ ] Rename `loyfael` package to your own package name
+- [ ] Update `main` class reference in `plugin.yml`
+- [ ] Change plugin `name` and `description` in `plugin.yml`
+- [ ] Update `author` field with your information
+- [ ] Add your project's `website` URL
+
+### Optional Customizations
+- [ ] Add additional dependencies to `pom.xml`
+- [ ] Create custom commands and permissions
+- [ ] Add configuration files for your plugin's settings
+- [ ] Implement event listeners for game events
+- [ ] Add unit tests in the `src/test/java` directory
+- [ ] Create additional resource files (messages, data files)
+
+### Advanced Customizations
+- [ ] Configure Maven Shade plugin for dependency bundling
+- [ ] Add integration with other plugins (soft dependencies)
+- [ ] Implement database connectivity if needed
+- [ ] Add metrics and telemetry collection
+- [ ] Create automated testing workflows
+
+## 💡 Best Practices
+
+### Code Organization
+- Keep your main class lightweight (only initialization logic)
+- Separate concerns into different classes (commands, listeners, utilities)
+- Use packages to organize related functionality
+- Follow Java naming conventions consistently
+
+### Performance Considerations
+- Use async operations for heavy tasks (`Bukkit.getScheduler().runTaskAsynchronously()`)
+- Cache frequently accessed data
+- Minimize database queries and network calls
+- Use appropriate data structures for your use cases
+
+### Configuration Management
+- Provide sensible defaults in your configuration files
+- Validate configuration values on plugin load
+- Support configuration reloading without server restart
+- Document configuration options clearly
+
+## 🤝 Contributing to This Template
+
+This template is designed to be simple, focused, and reusable. If you have suggestions for improvements that:
+- Maintain the template's simplicity and clarity
+- Add value for most plugin developers
+- Follow modern Java and Minecraft development practices
+- Don't introduce unnecessary complexity
+
+Feel free to contribute via pull requests or issues.
+
+## 🆘 Getting Help
+
+### Documentation Resources
+- **Paper Documentation**: https://docs.papermc.io/
+- **Paper API Javadocs**: https://jd.papermc.io/paper/1.21.7/
+- **Maven Documentation**: https://maven.apache.org/guides/getting-started/
+- **Java 21 Documentation**: https://docs.oracle.com/en/java/javase/21/
+
+### Community Support
+- **Paper Discord**: https://discord.gg/papermc
+- **SpigotMC Forums**: https://www.spigotmc.org/
+- **r/feedthebeast**: Reddit community for modded Minecraft
+- **Minecraft Development Communities**: Various Discord servers and forums
+
+### Common Issues
+- **"Cannot resolve symbol 'bukkit'"**: Ensure your IDE recognizes the Maven project and has downloaded dependencies
+- **"Main class not found"**: Check that the `main` field in `plugin.yml` matches your actual main class path
+- **"Unsupported API version"**: Verify you're using Paper 1.21.7+ and not an older server version
+
+## 📄 License
+
+This template is provided as-is for educational and development purposes. Use it as a starting point for your own Paper plugins. No warranty or support is provided, but feel free to modify and distribute as needed.
+
+## 🏆 Acknowledgments
+
+- **Paper Team** for creating an excellent server platform
+- **Minecraft Community** for continuous innovation and support
+- **Apache Maven** for reliable build management
+- **Java Community** for the robust programming language and ecosystem
+
+---
+
+**⚠️ Important Note**: This template is specifically designed for Minecraft 1.21.7+ and will not work with earlier versions. The Paper API has evolved significantly, and this template takes advantage of modern features not available in older versions. For legacy support, consider using different templates or maintaining separate branches for different Minecraft versions.
+
+**🎯 Template Philosophy**: This template prioritizes simplicity, reliability, and modern development practices over backwards compatibility and feature completeness. It's designed to be a solid foundation that you can build upon, not a comprehensive framework that does everything for you.
