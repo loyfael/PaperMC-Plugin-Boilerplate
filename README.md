@@ -58,6 +58,3 @@ I deliberately chose **Maven** over Gradle for this template. Maven offers a sim
 
 ## License
 You are free to use, modify, and share this template for your own plugin projects.
-
-## Author
-loyfael
