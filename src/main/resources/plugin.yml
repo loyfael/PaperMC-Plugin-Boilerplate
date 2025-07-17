@@ -1,0 +1,7 @@
+name: SkySyncro
+main: loyfael.Main
+version: 1.0
+api-version: '1.20'
+author: loyfael
+description: Plugin Paper de base généré automatiquement.
+
