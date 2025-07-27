@@ -13,15 +13,14 @@ A modern, reusable template for creating Minecraft Paper plugins targeting **Min
 
 ## 🚀 Why This Template?
 
-### Maven Over Gradle
-This template deliberately uses **Maven instead of Gradle** for several reasons:
-- **Simplicity**: Maven's XML-based configuration is straightforward and easy to understand
-- **Rigidity**: Maven's opinionated structure enforces good practices and consistency
-- **Reliability**: Less configuration means fewer things can go wrong
-- **IDE Integration**: Better out-of-the-box support in most IDEs, especially IntelliJ IDEA
-- **Learning Curve**: Easier for beginners to understand and modify
-- **Dependency Management**: Clear and explicit dependency declarations
-- **Build Lifecycle**: Predictable and standardized build phases
+### Why I Don’t Use Gradle
+> Gradle may be popular, but in my experience, it adds unnecessary complexity to modern Paper plugin projects. Its configuration system is too permissive, often confusing, and when something goes wrong in a build.gradle.kts, it tends to fail silently. Debugging becomes a frustrating and time-consuming task.
+> 
+> Unlike Maven, Gradle doesn’t enforce a clear structure. It leaves too much room for improvisation, which can hurt readability and long-term maintainability.. and specially when coming back to the project after a few weeks. The build process feels more opaque, and the > error messages are often vague and hard to trace. Maven, on the other hand, provides clear messages, predictable phases, and a transparent lifecycle.
+> 
+> IDE support, particularly in IntelliJ IDEA, tends to be more stable and reliable with Maven. Projects are recognized and imported without any extra tweaks or obscure scripts, which is not always the case with Gradle-based builds in the Minecraft ecosystem.
+> 
+> I prefer a strict, clean, and reliable foundation. Maven forces good structure, makes the project easier to understand for other developers, and avoids the kind of "magical" issues that often appear with Gradle. This template reflects that philosophy: no unnecessary abstraction, just a simple, robust, and efficient setup.
 
 ### Minecraft 1.21.7+ Only
 This template is **exclusively for Minecraft 1.21.7 and above**:
@@ -224,34 +223,7 @@ FileConfiguration customConfig = YamlConfiguration.loadConfiguration(customConfi
 - **Database integrations** (add as needed for your specific use case)
 - **Advanced plugin architectures** (MVC, dependency injection, etc.)
 
-## 📝 Customization Checklist
-
-### Essential Customizations
-- [ ] Change `artifactId` in `pom.xml` to your plugin name
-- [ ] Update `groupId` in `pom.xml` to your organization/namespace
-- [ ] Rename `loyfael` package to your own package name
-- [ ] Update `main` class reference in `plugin.yml`
-- [ ] Change plugin `name` and `description` in `plugin.yml`
-- [ ] Update `author` field with your information
-- [ ] Add your project's `website` URL
-
-### Optional Customizations
-- [ ] Add additional dependencies to `pom.xml`
-- [ ] Create custom commands and permissions
-- [ ] Add configuration files for your plugin's settings
-- [ ] Implement event listeners for game events
-- [ ] Add unit tests in the `src/test/java` directory
-- [ ] Create additional resource files (messages, data files)
-
-### Advanced Customizations
-- [ ] Configure Maven Shade plugin for dependency bundling
-- [ ] Add integration with other plugins (soft dependencies)
-- [ ] Implement database connectivity if needed
-- [ ] Add metrics and telemetry collection
-- [ ] Create automated testing workflows
-
 ## 💡 Best Practices
-
 ### Code Organization
 - Keep your main class lightweight (only initialization logic)
 - Separate concerns into different classes (commands, listeners, utilities)
