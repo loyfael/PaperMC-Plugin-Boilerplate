@@ -1,4 +1,4 @@
-# SkySyncro - Paper Plugin Template
+# Paper Plugin Template
 
 A modern, reusable template for creating Minecraft Paper plugins targeting **Minecraft 1.21.7**. This template is specifically designed for the latest Minecraft versions and will **not support versions below 1.21**.
 
